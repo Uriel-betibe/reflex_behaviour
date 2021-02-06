@@ -14,5 +14,6 @@ dependencies:
     - torchvision
     - cudatoolkit
     - pip:
+        - python-socketio==4.2.1
         - opencv-python
         - tensorboard_logger
