@@ -69,7 +69,7 @@ def telemetry(sid, data):
             # from PIL image to numpy array
             #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             # predict the steering angle for the image
-            img = Variable(torch.FloatTensor([img], device=device)).permute(0,3,1,2)
+            img = Variable(torch.cuda.FloatTensor([img], device=device)).permute(0,3,1,2)
 
             steering_angle_throttle = model(img)
             #steering_angle = steering_angle_throttle[0].item()

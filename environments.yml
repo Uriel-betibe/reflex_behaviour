@@ -12,7 +12,7 @@ dependencies:
     - tqdm
     - pytorch 
     - torchvision
-    - cudatoolkit=10.1
+    - cudatoolkit
     - pip:
         - opencv-python
         - tensorboard_logger
