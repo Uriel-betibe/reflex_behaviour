@@ -44,9 +44,9 @@ def train_model(args, model, dataset_train, dataset_val):
             img, label = utils.random_translate(img, label, 100, 10)
             img = utils.random_shadow(img)
             img = utils.random_brightness(img)
-            img = Variable(torch.cuda.FloatTensor([img]))
+            img = Variable(torch.FloatTensor([img]))
             label = np.array([label]).astype(float)
-            label = Variable(torch.cuda.FloatTensor(label))
+            label = Variable(torch.FloatTensor(label))
             img = img.permute(0,3,1,2)
 
             out_vec = model(img)
@@ -121,10 +121,10 @@ def eval_model(model,dataset,num_samples):
         img, label = utils.random_translate(img, label, 100, 10)
         img = utils.random_shadow(img)
         img = utils.random_brightness(img)
-        img = Variable(torch.cuda.FloatTensor([img]))
+        img = Variable(torch.FloatTensor([img]))
         img = img.permute(0,3,1,2)
         label = np.array([label]).astype(float)
-        label = Variable(torch.cuda.FloatTensor(label))
+        label = Variable(torch.FloatTensor(label))
 
         out_vec = model(img)
 
@@ -143,8 +143,8 @@ def main(args):
 
     model = Reflex_CNN()
 
-    if torch.cuda.is_available():
-        model = model.cuda()
+    
+    model = model.cpu()
 
 
     print('Creating model ...')
